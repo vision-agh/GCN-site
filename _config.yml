@@ -1,0 +1,11 @@
+exclude:
+  - node_modules
+  - script
+
+sass:
+  style: :compressed
+
+theme: jekyll-theme-primer
+
+title: Hardware-based Spatio-Temporal Graph Convolutional Networks for Event Data
+description: For now none
