@@ -106,16 +106,4 @@ If you find this work interesting, check out our publications:
    }
    ```
 
-5. **Graph-based Moving Object Segmentation for underwater videos using semi-supervised learning**  
-   ```bibtex
-   @article{kapoor2025graph,
-     title={Graph-based Moving Object Segmentation for underwater videos using semi-supervised learning},
-     author={Kapoor, Meghna and Prummel, Wieke and Giraldo, Jhony H and Subudhi, Badri Narayan and Zakharova, Anastasia and Bouwmans, Thierry and Bansal, Ankur},
-     journal={Computer Vision and Image Understanding},
-     pages={104290},
-     year={2025},
-     publisher={Elsevier}
-   }
-   ```
-
 For more detailed insights and experimental data, please refer to the above publications.
