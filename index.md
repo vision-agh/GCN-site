@@ -3,34 +3,67 @@ layout: default
 title: "Graph Convolutional Networks (GCNs)"
 ---
 
+# Contact
+
+If you are interested in this work, please contact **Kamil Jeziorek**:
+
+<kjeziorek@agh.edu.pl>
+
+or one of the co-workers listed at the bottom of the page.
+
 # Neuromorphic Sensors
 
-Neuromorphic sensors, such as event-based cameras, mimic the behavior of biological visual systems by transmitting information through asynchronous “spikes.” Instead of providing full image frames at a constant rate, they capture changes in the scene at the pixel level, leading to highly efficient and sparse data. These properties enable low-latency and power-efficient vision processing, making neuromorphic sensors ideal for applications in robotics, embedded systems, and edge computing.
+Neuromorphic sensors, such as event-based cameras and dynamic audio sensors (DAS), mimic the behavior of biological sensory systems by transmitting information through asynchronous “spikes.” Instead of providing continuous frames or signals at a constant rate, they capture **changes** in the scene or audio signal at the sensor level. This leads to highly efficient and sparse data representation, enabling low-latency and power-efficient processing—ideal for applications in robotics, embedded systems, and edge computing.
+
+## Event-Based (DVS) Cameras
+
+Event-based cameras (also referred to as Dynamic Vision Sensors, DVS) capture changes in brightness at each pixel independently. Rather than producing full images at a set frame rate, each pixel fires an event whenever it detects a significant change in intensity. 
+
+<img src="event_camera.gif" alt="Comparison with SoTA for DVS implementation" width="400px" />
+
+## Dynamic Audio Sensors (DAS)
+
+Dynamic Audio Sensors (DAS) operate on a similar neuromorphic principle but for acoustic signals. Instead of sampling at a fixed rate like traditional microphones, DAS devices output spike-like events in response to changes in sound pressure or other relevant audio features.
+
+Just as with event-based cameras, the sparse and asynchronous output of DAS is well-suited for graph-based representations, where each event can be considered a node connected by edges that capture temporal or spectral relationships.
+
 
 ## Introduction to GCNs
 
-Graph Convolutional Networks (GCNs) extend neural network-based modeling to graph-structured data. While traditional convolutional neural networks (CNNs) excel at processing grid-like data (e.g., images, time series), GCNs operate on non-Euclidean domains, capturing relationships between nodes (features) connected by edges. In the context of event-based (neuromorphic) data, each event can be considered a node, and connections (edges) represent spatio-temporal correlations between events.
+Graph Convolutional Networks (GCNs) extend neural network-based modeling to graph-structured data. While traditional Convolutional Neural Networks (CNNs) excel at processing grid-like data (e.g., images, time series), GCNs operate on non-Euclidean domains, capturing relationships between nodes (features) connected by edges.  
+
+In the context of **event-based (neuromorphic) data**—from both DVS cameras and DAS—each event can be considered a node, and connections (edges) represent spatio-temporal or spectro-temporal correlations between events.
 
 ### Integrating GCNs with SoC FPGAs
 
 System-on-Chip Field-Programmable Gate Arrays (SoC FPGAs) combine a programmable logic fabric with a processor system (often ARM-based), enabling both hardware acceleration and software programmability on a single device. By offloading computationally intensive operations—like graph convolutions—to dedicated hardware accelerators, we can achieve:
 
-- **Real-time performance** even on high-throughput event streams.  
-- **Low latency** by processing data locally without transferring to external servers or GPUs.  
+- **Real-time performance** even on high-throughput event/audio streams.  
+- **Low latency** by processing data locally without the need to transfer large amounts of data to external servers or GPUs.  
 - **Energy efficiency** due to the inherent parallelism and customizability of FPGA-based designs.
 
-Our research explores memory-efficient and scalable GCN implementations specifically tailored for event-based vision. We optimize data structures and graph representations to leverage the parallel nature of FPGAs while minimizing on-chip resource usage.
+<img src="teaser.png" alt="Teaser of our solution" width="400px" />
+
+
+Our research explores **memory-efficient and scalable GCN implementations** specifically tailored for neuromorphic data. We optimize data structures and graph representations to leverage the parallel nature of FPGAs while minimizing on-chip resource usage.
 
 ### Results
 
 Our preliminary results show that:
-1. **Real-time Processing:** We achieve near real-time frame rates for event-based classification tasks.  
+
+1. **Real-time Processing:** We achieve near real-time performance for event-based classification tasks (both visual and audio).  
 2. **Resource Efficiency:** Optimized graph representations reduce memory overhead and logic utilization, making them suitable for mid-range SoC FPGAs.  
-3. **High Accuracy:** GCNs consistently outperform traditional frame-based methods when processing sparse and asynchronous neuromorphic data, providing robust recognition in challenging scenarios.  
+3. **High Accuracy:** GCNs consistently outperform traditional frame-based or continuous-sampling methods when processing sparse, asynchronous neuromorphic data, providing robust recognition in challenging scenarios.   
 
 <img src="das_sota.png" alt="Comparison with SoTA for DAS implementation" width="400px" />
 
 <img src="dvs_sota.png" alt="Comparison with SoTA for DVS implementation" width="400px" />
+
+Our work was also awarded during AMD Open Hardware Design Competition. 
+
+<https://www.openhw.eu/2024>
+
+[<img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" width="40px">](https://www.youtube.com/watch?v=w8-i1E3F-jE)
 
 
 More details on the experiments, performance metrics, and hardware resource usage can be found in our publications listed below.
@@ -57,6 +90,7 @@ Below are all the people involved in this project:
 Feel free to reach out to any of us for more details regarding our ongoing research.
 
 ---
+
 
 ## Publications & Citations
 
